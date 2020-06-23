@@ -66,15 +66,13 @@ public class DbUtils {
 		if(conn!=null) {
 			try {
 				st=conn.createStatement();
-				String Sql="Select EMP_NAME,EMP_SAL,DEPT from employee where EMP_ID='"+employeeId+"'";
+				String Sql="Select EMP_NAME,EMP_SAL,DEPT_NAME from employee where EMP_ID='"+employeeId+"'";
 				rs = st.executeQuery(Sql);
 				while (rs.next()) {
 					String name = rs.getString("EMP_NAME");
-					String salary = rs.getString("EMP_SAL");
-					String dept = rs.getString("DEPT");
+					String dept = rs.getString("DEPT_NAME");
 					ef.setEmployeeId(employeeId);
 					ef.setName(name);
-					ef.setSalary(salary);
 					ef.setDept(dept);
 				}
 			}
@@ -112,7 +110,7 @@ public class DbUtils {
 			try {
 				st=conn.createStatement();
 				String updateSql="update employee"
-						+" set EMP_NAME='" + updatedEmpForm.getName() + "'," +"EMP_SAL='"+updatedEmpForm.getSalary()+ "',"+"DEPT='"+updatedEmpForm.getDept()+"' where emp_id="+updatedEmpForm.getEmployeeId();
+						+" set EMP_NAME='" + updatedEmpForm.getName() + "'," + "',"+"DEPT_NAME='"+updatedEmpForm.getDept()+"' where emp_id="+updatedEmpForm.getEmployeeId();
 				
 				System.out.println(updateSql);
 				
@@ -154,18 +152,16 @@ public class DbUtils {
 		if(conn!=null) {
 			try {
 				st=conn.createStatement();
-				String Sql="Select EMP_ID,EMP_NAME,EMP_SAL,DEPT from employee";
+				String Sql="Select EMP_ID,EMP_NAME,DEPT_NAME from employee";
 				rs = st.executeQuery(Sql);
 				while (rs.next()) {
 					EmployeeForm ef=new EmployeeForm();
 					int employeeId=Integer.parseInt(rs.getString("EMP_ID"));
 					String id=String.valueOf(employeeId);
 					String name = rs.getString("EMP_NAME");
-					String salary = rs.getString("EMP_SAL");
-					String dept = rs.getString("DEPT");
+					String dept = rs.getString("DEPT_NAME");
 					ef.setEmployeeId(employeeId);
 					ef.setName(name);
-					ef.setSalary(salary);
 					ef.setId(id);
 					ef.setDept(dept);
 					listOfemp.add(ef);
@@ -238,5 +234,8 @@ public class DbUtils {
 		return found;
 
 }
+/*
+ * public static void main(String[] args) { DbUtils.getALLEmployee(); }
+ */
 }
 
