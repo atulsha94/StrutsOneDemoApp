@@ -21,6 +21,7 @@ public class UserLoginAction extends Action{
 	    if(checkUser) {
 	    return mapping.findForward("success");
 	    }else {
+	    	request.setAttribute("msgId", "User Name and Password does not match");
 	    	return mapping.findForward("error");
 	    }
 	    }
