@@ -234,8 +234,5 @@ public class DbUtils {
 		return found;
 
 }
-/*
- * public static void main(String[] args) { DbUtils.getALLEmployee(); }
- */
 }
 
