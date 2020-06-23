@@ -13,12 +13,12 @@
     </form-beans>
 
 	<global-forwards>
-        <forward name="helloWorld" path="/helloWorld.do"/>
+        <forward name="dashboard" path="/dashboard.do"/>
     </global-forwards>
 
     <action-mappings>
-        <action path="/helloWorld" type="com.acc.action.HelloWorldAction" name="helloWorldForm">
-        	<forward name="success" path="/helloWorld.jsp" />
+        <action path="/dashboard" type="com.acc.action.DashBoardAction" name="helloWorldForm">
+        	<forward name="success" path="/dashboard.jsp" />
         </action>
        
         

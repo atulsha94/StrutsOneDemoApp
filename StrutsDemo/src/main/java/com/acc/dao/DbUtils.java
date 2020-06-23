@@ -22,7 +22,7 @@ public class DbUtils {
 			try {
 				st=conn.createStatement();
 				String insertSql="insert into employee(EMP_NAME,EMP_SAL,DEPT) "
-						+" values('" + addEmpForm.getName() + "','" + addEmpForm.getSalary()+ "','" + addEmpForm.getDept() + "')";
+						+" values('" + addEmpForm.getName() + "','" + /*addEmpForm.getSalary()*/""+ "','" + addEmpForm.getDept() + "')";
 				int m =st.executeUpdate(insertSql);
 				if (m> 0) {
 					rs=st.getGeneratedKeys();
@@ -152,7 +152,7 @@ public class DbUtils {
 		if(conn!=null) {
 			try {
 				st=conn.createStatement();
-				String Sql="Select EMP_ID,EMP_NAME,DEPT_NAME from employee";
+				String Sql="Select EMP_ID,EMP_NAME,DEPT_NAME,Address,Email,PhoneNo from employee";
 				rs = st.executeQuery(Sql);
 				while (rs.next()) {
 					EmployeeForm ef=new EmployeeForm();
@@ -160,10 +160,16 @@ public class DbUtils {
 					String id=String.valueOf(employeeId);
 					String name = rs.getString("EMP_NAME");
 					String dept = rs.getString("DEPT_NAME");
-					ef.setEmployeeId(employeeId);
-					ef.setName(name);
+					String address = rs.getString("Address");
+					String email = rs.getString("Email");
+					String phoneNo = rs.getString("PhoneNo");
+					
 					ef.setId(id);
+					ef.setName(name);
 					ef.setDept(dept);
+					ef.setAddress(address);
+					ef.setEmail(email);
+					ef.setPhone(phoneNo);
 					listOfemp.add(ef);
 				}
 				
@@ -190,7 +196,6 @@ public class DbUtils {
 		
 	}
 		return listOfemp;
-
 }
 	public static boolean getuserDetails(UserLoginForm form) {
 		Connection conn=DbConnection.getConnection();
