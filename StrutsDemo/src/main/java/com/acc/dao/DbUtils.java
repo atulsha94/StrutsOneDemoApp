@@ -1,6 +1,7 @@
 package com.acc.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.acc.form.EmployeeForm;
+import com.acc.form.UserLoginForm;
 
 public class DbUtils {
 
@@ -19,7 +21,7 @@ public class DbUtils {
 		if(conn!=null) {
 			try {
 				st=conn.createStatement();
-				String insertSql="insert into EMP(EMP_NAME,EMP_SAL,DEPT) "
+				String insertSql="insert into employee(EMP_NAME,EMP_SAL,DEPT) "
 						+" values('" + addEmpForm.getName() + "','" + addEmpForm.getSalary()+ "','" + addEmpForm.getDept() + "')";
 				int m =st.executeUpdate(insertSql);
 				if (m> 0) {
@@ -109,7 +111,7 @@ public class DbUtils {
 		if(conn!=null) {
 			try {
 				st=conn.createStatement();
-				String updateSql="update EMP"
+				String updateSql="update employee"
 						+" set EMP_NAME='" + updatedEmpForm.getName() + "'," +"EMP_SAL='"+updatedEmpForm.getSalary()+ "',"+"DEPT='"+updatedEmpForm.getDept()+"' where emp_id="+updatedEmpForm.getEmployeeId();
 				
 				System.out.println(updateSql);
@@ -194,4 +196,47 @@ public class DbUtils {
 		return listOfemp;
 
 }
+	public static boolean getuserDetails(UserLoginForm form) {
+		Connection conn=DbConnection.getConnection();
+		ResultSet rs=null;
+		boolean found=false;
+		if(conn!=null) {
+			try {
+		        String sql = "SELECT * FROM userdetails WHERE userName = ? and password = ?";
+		        PreparedStatement statement = conn.prepareStatement(sql);
+		        statement.setString(1, form.getUserName());
+		        statement.setString(2, form.getPassword());
+		 
+		         rs = statement.executeQuery();
+		 
+		 
+		        if (rs.next()) {
+		        	found=true;
+		        }
+		 return found;
+				
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+			finally {
+				try {
+					if (rs != null) {
+						rs.close(); // close result set
+					}
+					
+					if (conn != null) {
+						conn.close(); // close connection
+					}
+				}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+	}
+		return found;
+
 }
+}
+
