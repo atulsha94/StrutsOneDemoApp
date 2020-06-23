@@ -66,7 +66,7 @@ public class DbUtils {
 		if(conn!=null) {
 			try {
 				st=conn.createStatement();
-				String Sql="Select EMP_NAME,EMP_SAL,DEPT_NAME from employee where EMP_ID='"+employeeId+"'";
+				String Sql="Select EMP_NAME,DEPT_NAME from employee where EMP_ID='"+employeeId+"'";
 				rs = st.executeQuery(Sql);
 				while (rs.next()) {
 					String name = rs.getString("EMP_NAME");
