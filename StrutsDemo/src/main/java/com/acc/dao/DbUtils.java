@@ -21,11 +21,15 @@ public class DbUtils {
 		if(conn!=null) {
 			try {
 				st=conn.createStatement();
-				String insertSql="insert into employee(EMP_NAME,EMP_SAL,DEPT) "
-						+" values('" + addEmpForm.getName() + "','" + /*addEmpForm.getSalary()*/""+ "','" + addEmpForm.getDept() + "')";
-				int m =st.executeUpdate(insertSql);
+				String insertSql="insert into employee(EMP_NAME,Dept_Name,Email,Address,PhoneNo) "
+						+" values('" + addEmpForm.getName() + "','" + addEmpForm.getDept()+ "','" + addEmpForm.getEmail()+ "','" + addEmpForm.getAddress() + "','" + addEmpForm.getPhone() + "')";
+				System.out.println("query insert" +insertSql);
+				int m=st.executeUpdate(insertSql);
+				System.out.println("Ok its working");
+				
 				if (m> 0) {
 					rs=st.getGeneratedKeys();
+					
 					if (rs.next()) {
 						generatedEmpId=rs.getInt(1);
 					}
@@ -33,7 +37,8 @@ public class DbUtils {
 				
 			}
 			catch(SQLException se) {
-				
+	
+				se.printStackTrace();
 			}
 			finally {
 				try {
@@ -57,6 +62,57 @@ public class DbUtils {
 
 }
 
+
+
+	public static List<String> getAllDept() {
+		Connection conn=DbConnection.getConnection();
+		Statement  st=null;
+		ResultSet rs=null;
+	
+		List<String> listofdept=new ArrayList<String>();
+		if(conn!=null) {
+			try {
+				st=conn.createStatement();
+				String Sql="Select DEPT_NAME from department";
+				rs = st.executeQuery(Sql);
+				while (rs.next()) {
+				
+					String dept = rs.getString("DEPT_NAME");
+		
+					
+					
+					listofdept.add(dept);
+					
+				}
+				
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+			finally {
+				try {
+					if (rs != null) {
+						rs.close(); // close result set
+					}
+					if (st != null) {
+						st.close(); // close statement
+					}
+					if (conn != null) {
+						conn.close(); // close connection
+					}
+				}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+	}
+		return listofdept;
+}
+	 
+
+	
+	
 	public static EmployeeForm getEmployee(int employeeId) {
 		Connection conn=DbConnection.getConnection();
 		Statement  st=null;

@@ -148,6 +148,66 @@ i=0;
 
 
 
+
+    <!-- Edit ADD Modal HTML -->
+<div id="addEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/StrutsDemo/addEmployee1.do"  method="post">
+                <div class="modal-header">                       
+                    <h4 class="modal-title">Add Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">                   
+                    <div class="form-group">
+                        <label>Name</label>
+<!--                         <input type="text" id="name"   class="employeeForm" required> -->     
+    
+                           <html:text property="name" styleClass="form-control"   value=""/>
+                       
+ </div>
+                    <div class="form-group">
+                        <label>Department</label>
+                      <%--   <html:text property="dept" styleClass="form-control" value=""/> --%>
+                        
+                      <%!int i1=0; %>
+                     <%List<String>listOfDept=(List<String>)request.getAttribute("deptlist");
+                      i1=0;
+%>
+                  
+                 <html:select property="dept" name="employeeForm" styleClass="form-control" value="">
+                <html:option value="">-- Select --</html:option>
+                 <logic:iterate id="deptlist"   name="deptlist">
+                 <html:option value="<%=listOfDept.get(i1)%>"><bean:write name="deptlist"  /></html:option>
+                 <%i1++; %>
+                </logic:iterate>
+                  </html:select>
+                        
+                    </div>
+ 
+                    <div class="form-group">
+                        <label>Email</label>
+                        <html:text property="email" styleClass="form-control" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                         <html:text property="address" styleClass="form-control" value=""/> </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                      <html:text property="phone" styleClass="form-control" value=""/> </div>                   
+                </div>
+               
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-success" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 <!-- Edit Modal HTML -->
 <div id="editEmployeeModal" class="modal fade">
 	<div class="modal-dialog">

@@ -8,16 +8,19 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.acc.dao.DbUtils;
-import com.acc.form.HelloWorldForm;
-
+import com.acc.form.EmployeeForm;
 
 public class DashBoardAction extends Action {
 
 @Override
 public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-    HelloWorldForm hwForm = (HelloWorldForm) form;
+	EmployeeForm hwForm = (EmployeeForm) form;
 	request.setAttribute("list",DbUtils.getALLEmployee());
-	hwForm.setMessage("Employee List is");
+	
+	request.setAttribute("deptlist",DbUtils.getAllDept());
+	System.out.println("lst"+DbUtils.getAllDept());
+
     return mapping.findForward("success");
+
     }
 }
