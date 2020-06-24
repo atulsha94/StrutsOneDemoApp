@@ -110,7 +110,7 @@ public class DbUtils {
 			try {
 				st=conn.createStatement();
 				String updateSql="update employee"
-						+" set EMP_NAME='" + updatedEmpForm.getName() + "'," + "',"+"DEPT_NAME='"+updatedEmpForm.getDept()+"' where emp_id="+updatedEmpForm.getEmployeeId();
+						+" set EMP_NAME='" + updatedEmpForm.getName() + "',"+"EMAIL='"+updatedEmpForm.getEmail()+ "',"+"ADDRESS='"+updatedEmpForm.getAddress()+ "',"+"PHONENO="+updatedEmpForm.getPhone()+" where emp_id="+updatedEmpForm.getId();
 				
 				System.out.println(updateSql);
 				
@@ -218,7 +218,7 @@ public class DbUtils {
 				
 			}
 			catch(SQLException se) {
-				se.printStackTrace();
+				found=false;
 			}
 			finally {
 				try {
@@ -239,5 +239,43 @@ public class DbUtils {
 		return found;
 
 }
+	public static boolean deleteEmployeeDetails(String empId) {
+		Connection conn=DbConnection.getConnection();
+		ResultSet rs=null;
+		boolean delete=false;
+		if(conn!=null) {
+			try {
+		        String sql = "DELETE FROM employee WHERE EMP_ID = ?";
+		        PreparedStatement statement = conn.prepareStatement(sql);
+		        statement.setString(1, empId);
+		         int result = statement.executeUpdate();
+		        if (result==1) {
+		        	delete=true;
+		        }
+				
+			}
+			catch(SQLException se) {
+				delete=false;
+			}
+			finally {
+				try {
+					if (rs != null) {
+						rs.close(); // close result set
+					}
+					
+					if (conn != null) {
+						conn.close(); // close connection
+					}
+				}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+	}
+		return delete;
+
+}
+
 }
 

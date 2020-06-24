@@ -11,6 +11,7 @@ import org.apache.struts.action.ActionMapping;
 import com.acc.dao.DbUtils;
 import com.acc.form.EmployeeForm;
 import com.acc.form.HelloWorldForm;
+import com.acc.service.DashBoardService;
 
 public class UpdateEmployeeAction extends Action {
 
@@ -18,10 +19,7 @@ public class UpdateEmployeeAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		EmployeeForm updateEmpForm = (EmployeeForm) form;
-		int employeeId=updateEmpForm.getEmployeeId();
-		EmployeeForm employee =DbUtils.getEmployee(employeeId) ;
-		System.out.println(employee.getName());
-		request.setAttribute("employee", employee);
+		request.getSession().setAttribute("updateRecord", new DashBoardService().updateEmployee(updateEmpForm));
 		return mapping.findForward("success");
 		 
 	}
