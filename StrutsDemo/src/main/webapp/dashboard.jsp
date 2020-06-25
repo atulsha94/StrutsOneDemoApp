@@ -121,6 +121,14 @@ i=0;
 			 document.getElementById("editPhone").value=phone;
 			document.getElementById("editId").click();
 			}
+		function clear(){
+			alert("clear");
+			 document.getElementById("name").value="";
+			 document.getElementById("dept").value="";
+			 document.getElementById("email").value="";
+			 document.getElementById("address").value="";
+			 document.getElementById("phone").value="";
+			}
 		
 	</script>
 
@@ -131,7 +139,7 @@ i=0;
 			<html:form  action="/deleteAction.do">
 				<div class="modal-header">						
 					<h4 class="modal-title">Delete Employee</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="clear();">&times;</button>
 				</div>
 				<div class="modal-body">					
 					<p>Are you sure you want to delete these record?</p>
@@ -150,58 +158,63 @@ i=0;
 
 
     <!-- Edit ADD Modal HTML -->
+    <!-- Edit ADD Modal HTML -->
+ <!-- Edit ADD Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/StrutsDemo/addEmployee1.do"  method="post">
-                <div class="modal-header">                       
+            <form action="/StrutsDemo/addEmployee1.do"  method="post" class="needs-validation" >
+                <div class="modal-header">                      
                     <h4 class="modal-title">Add Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
-                <div class="modal-body">                   
+                <div class="modal-body">                  
                     <div class="form-group">
                         <label>Name</label>
-<!--                         <input type="text" id="name"   class="employeeForm" required> -->     
-    
-                           <html:text property="name" styleClass="form-control"   value=""/>
-                       
+<!--                         <input type="text" id="name"   class="employeeForm" required> -->    
+   
+                           <input type="text" class="form-control" id="name" name="name" required="required" value="">
+                      
  </div>
                     <div class="form-group">
                         <label>Department</label>
                       <%--   <html:text property="dept" styleClass="form-control" value=""/> --%>
-                        
+                       
                       <%!int i1=0; %>
                      <%List<String>listOfDept=(List<String>)request.getAttribute("deptlist");
                       i1=0;
 %>
-                  
-                 <html:select property="dept" name="employeeForm" styleClass="form-control" value="">
-                <html:option value="">-- Select --</html:option>
-                 <logic:iterate id="deptlist"   name="deptlist">
-                 <html:option value="<%=listOfDept.get(i1)%>"><bean:write name="deptlist"  /></html:option>
-                 <%i1++; %>
-                </logic:iterate>
-                  </html:select>
-                        
+                 
+                <select id="dept" name="dept" Class="form-control" required="required" >             
+                                    
+                                     <option value="" >-- Select --</option>                  <logic:iterate id="deptlist"   name="deptlist">      
+                                     <option value="<%=listOfDept.get(i1)%>"><bean:write name="deptlist"  /></option>                  <%i1++; %>     
+                                     </logic:iterate>                   </select>                                             
+                 
+                       
                     </div>
- 
+
                     <div class="form-group">
                         <label>Email</label>
-                        <html:text property="email" styleClass="form-control" value=""/>
+                         <input type="email" value="" class="form-control" id="email" name="email" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                     </div>
                     <div class="form-group">
                         <label>Address</label>
-                         <html:text property="address" styleClass="form-control" value=""/> </div>
+                         <input type="text" value="" class="form-control" id="address" name="address" required="required"> </div>
                     <div class="form-group">
                         <label>Phone</label>
-                      <html:text property="phone" styleClass="form-control" value=""/> </div>                   
+                        
+                      <input type="tel" value="" class="form-control" id="phone" name="phone" required="required"  pattern="[6-9]{1}[0-9]{9}"> </div>                  
                 </div>
-               
+              
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" oncancel="clear();" >
                     <input type="submit" class="btn btn-success" value="Add">
                 </div>
+               
+               
             </form>
+           
         </div>
     </div>
 </div>
@@ -226,7 +239,7 @@ i=0;
 					</div>
 					<div class="form-group">
 						<label>Employee Name</label>
-						<input type="text" class="form-control" id="editName" name="name">
+						<input type="text" class="form-control" id="editName" name="name" required="required">
 					</div>	
 					<div class="form-group">
 						<label>Dept Name</label>
@@ -234,15 +247,15 @@ i=0;
 					</div>	
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" id="editEmail" name ="email">
+						<input type="email" class="form-control" id="editEmail" name ="email" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<textarea class="form-control" id="editAddress" name="address"></textarea>
+						<textarea class="form-control" id="editAddress" name="address" required="required"></textarea>
 					</div>
 					<div class="form-group">
 						<label>Phone</label>
-						<input type="text" class="form-control" id="editPhone" name="phone">
+						<input type="tel" class="form-control" id="editPhone" name="phone" required="required" pattern="[6-9]{1}[0-9]{9}">
 					</div>					
 				</div>
 				<div class="modal-footer">
