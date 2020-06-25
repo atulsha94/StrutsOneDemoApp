@@ -11,10 +11,10 @@
              <msg name="required" key="errors.userName.required" />
             
          </field>
-          <field property="password" depends="required,maxlength,minlength">
+          <field property="password" depends="required">
          
              <msg name="required" key="errors.password.required" />
-             <msg name="maxlength" key="error.user.password.length" />
+             <!-- <msg name="maxlength" key="error.user.password.length" />
              <msg name="minlength" key="error.user.password.length" />
              
              <arg name="maxlength" key="${var:minlength}" position="0"
@@ -34,7 +34,7 @@
                 <var>
                     <var-name>maxlength</var-name>
                     <var-value>15</var-value>
-                </var>
+                </var> -->
          </field>
          
         <!--  <field property="password" depends="required,maxlength,minlength,mask">

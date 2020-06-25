@@ -7,7 +7,6 @@
 <struts-config>
 
     <form-beans>
-    	<form-bean name="helloWorldForm" type="com.acc.form.HelloWorldForm"/>
     	<form-bean name="employeeForm" type="com.acc.form.EmployeeForm"/>
     	<form-bean name="userLoginForm" type="com.acc.form.UserLoginForm"/>
     </form-beans>
@@ -37,12 +36,12 @@
         
         
         
-          <action path="/userLogin" type="com.acc.action.UserLoginAction" name="userLoginForm">
+          <action path="/userLogin" type="com.acc.action.UserLoginAction" input="/login.jsp" name="userLoginForm">
         <forward name="success" path="/index.jsp" />
         <forward name="error" path="/login.jsp" />
         </action>
         
-        <action path="/deleteAction" type="com.acc.action.DeleteEmployeeAction" name="helloWorldForm" parameter="empId">
+        <action path="/deleteAction" type="com.acc.action.DeleteEmployeeAction" name="employeeForm" parameter="empId">
         	<forward name="success" path="/deleteSuccess.jsp" />
         	
         </action>
