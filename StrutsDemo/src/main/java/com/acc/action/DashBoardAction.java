@@ -9,16 +9,18 @@ import org.apache.struts.action.ActionMapping;
 
 import com.acc.dao.DbUtils;
 import com.acc.form.EmployeeForm;
+import com.acc.service.DashBoardService;
 
 public class DashBoardAction extends Action {
 
 @Override
 public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	EmployeeForm hwForm = (EmployeeForm) form;
-	request.setAttribute("list",DbUtils.getALLEmployee());
+	DashBoardService dashBoardService=new DashBoardService();
 	
-	request.setAttribute("deptlist",DbUtils.getAllDept());
-	System.out.println("lst"+DbUtils.getAllDept());
+	request.setAttribute("list",dashBoardService.getAllEmployees());
+	
+	request.setAttribute("deptlist",dashBoardService.getAllDept());
 
     return mapping.findForward("success");
 

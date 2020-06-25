@@ -24,7 +24,7 @@ public class DbUtils {
 				String insertSql="insert into employee(EMP_NAME,Dept_Name,Email,Address,PhoneNo) "
 						+" values('" + addEmpForm.getName() + "','" + addEmpForm.getDept()+ "','" + addEmpForm.getEmail()+ "','" + addEmpForm.getAddress() + "','" + addEmpForm.getPhone() + "')";
 				System.out.println("query insert" +insertSql);
-				int m=st.executeUpdate(insertSql);
+				int m=st.executeUpdate(insertSql,Statement.RETURN_GENERATED_KEYS);
 				System.out.println("Ok its working");
 				
 				if (m> 0) {
