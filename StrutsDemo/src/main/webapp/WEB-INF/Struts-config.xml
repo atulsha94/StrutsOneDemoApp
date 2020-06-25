@@ -30,7 +30,7 @@
         
         
         
-        <action path="/updateEmployee" type="com.acc.action.UpdateEmployeeAction" name="employeeForm">
+        <action path="/updateEmployee" type="com.acc.action.UpdateEmployeeAction" validate="false" name="employeeForm">
         	<forward name="success" path="/updateEmpSuccess.jsp" />
         </action>
         
@@ -41,7 +41,7 @@
         <forward name="error" path="/login.jsp" />
         </action>
         
-        <action path="/deleteAction" type="com.acc.action.DeleteEmployeeAction" name="employeeForm" parameter="empId">
+        <action path="/deleteAction" type="com.acc.action.DeleteEmployeeAction" name="employeeForm" validate="false" parameter="empId">
         	<forward name="success" path="/deleteSuccess.jsp" />
         	
         </action>
