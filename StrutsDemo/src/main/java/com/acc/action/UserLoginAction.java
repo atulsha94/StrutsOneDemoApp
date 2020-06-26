@@ -3,26 +3,52 @@ package com.acc.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
 
-import com.acc.form.UserLoginForm;
+
+import com.acc.bean.UserLoginBean;
 import com.acc.service.UserLoginService;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class UserLoginAction extends Action{
+public class UserLoginAction extends ActionSupport{
 
-	
+	private String userName;
+	private String password;
+	private String msgId;
+
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	    UserLoginForm userForm = (UserLoginForm) form;
-	    boolean checkUser=new UserLoginService().checkUserLoginDetails(userForm);
+	public String execute() throws Exception {
+	    boolean checkUser=new UserLoginService().checkUserLoginDetails(userName,password);
 	    if(checkUser) {
-	    return mapping.findForward("success");
+	    	msgId= "welcome to Employee Details Page";
+	    return "SUCCESS";
 	    }else {
-	    	request.setAttribute("msgId", "User Name and Password does not match");
-	    	return mapping.findForward("error");
+	    	msgId= "User Name and Password does not match";
+	    	return "ERROR";
 	    }
 	    }
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getMsgId() {
+		return msgId;
+	}
+
+	public void setMsgId(String msgId) {
+		this.msgId = msgId;
+	}
+	
 }

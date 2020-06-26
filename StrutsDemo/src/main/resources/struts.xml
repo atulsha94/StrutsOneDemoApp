@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" extends="struts-default">
+		<action name="userLogin" class="com.acc.action.UserLoginAction">
+			<result name="SUCCESS">/new.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<!-- <action name="dashboard" class="com.acc.action.DashBoardAction">
+			<result name="dashboard">/report.jsp</result>
+		</action>
+		<action name="updatedetails" class="org.websparrow.action.UpdateAction">
+			<result name="UPDATE">/update.jsp</result>
+		</action>
+		<action name="deleterecord" class="org.websparrow.action.DeleteAction">
+			<result name="DELETE">/delete.jsp</result>
+		</action> -->
+	</package>
+</struts>  

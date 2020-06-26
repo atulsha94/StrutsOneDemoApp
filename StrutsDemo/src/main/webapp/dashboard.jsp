@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
@@ -81,9 +81,9 @@ i=0;
 		</tbody>
 	</table>
 
-	<%-- <html:link action="/addEmployee">Add Employee</html:link>
+	<html:link action="/addEmployee">Add Employee</html:link>
 	<br></br>
-	<html:link action="/updateEmployee">Update Employee</html:link> --%>
+	<html:link action="/updateEmployee">Update Employee</html:link>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -178,7 +178,7 @@ i=0;
  </div>
                     <div class="form-group">
                         <label>Department</label>
-                      <%--   <html:text property="dept" styleClass="form-control" value=""/> --%>
+                        <html:text property="dept" styleClass="form-control" value=""/>
                        
                       <%!int i1=0; %>
                      <%List<String>listOfDept=(List<String>)request.getAttribute("deptlist");
@@ -267,4 +267,4 @@ i=0;
 	</div>
 </div>
 </body>
-</html>
+</html> --%>

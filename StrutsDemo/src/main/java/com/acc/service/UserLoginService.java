@@ -1,11 +1,10 @@
 package com.acc.service;
 
 import com.acc.dao.DbUtils;
-import com.acc.form.UserLoginForm;
 
 public class UserLoginService {
 
-	public boolean checkUserLoginDetails(UserLoginForm form) {
-		return DbUtils.getuserDetails(form);
+	public boolean checkUserLoginDetails(String userName,String password) {
+		return DbUtils.getuserDetails(userName,password);
 	}
 }

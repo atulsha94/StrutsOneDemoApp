@@ -1,7 +1,5 @@
-<%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +15,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 logindiv">
-				<form class="login100-form validate-form" action="/StrutsDemo/userLogin.do" method="post">
-					<div style="color: red"><html:errors /></div>
+				<form class="login100-form validate-form" action="userLogin.do" method="post">
 					<span class="login100-form-title p-b-49">
 						Login
 					</span>
