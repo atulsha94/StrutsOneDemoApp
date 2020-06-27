@@ -1,10 +1,11 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%-- <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
-<%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
-<%@ page import="com.acc.form.EmployeeForm"%>
+<%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%> --%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.acc.bean.*"%>
 <%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
@@ -31,12 +32,15 @@
 <body>
     <%!int i=0;%>
 <%
-	List<EmployeeForm> form=(List<EmployeeForm>)request.getAttribute("list");
+/* 	List<EmployeeForm> form=(List<EmployeeForm>)request.getAttribute("list"); empBeanList
+ */
+ List<EmployeeBean> form=(List<EmployeeBean>)request.getAttribute("empBeanList");
+
 i=0;
 %>
 	<div class="col-sm-6">
 		<h2>
-			Manage <b>Employees</b>
+			Manage<b>Employees</b>
 		</h2>
 	</div>
 	<div align="right">
@@ -60,30 +64,56 @@ i=0;
 			</tr>
 		</thead>
 		<tbody>
-			<logic:iterate id="listId" name="list">
+		
+		
+		
+        <s:iterator value="empBeanList"> 
+        <tr>
+         <td><s:property value="id"/> </td>
+        <td><s:property value="name"/> </td>
+        <td><s:property value="dept"/> </td>
+        <td><s:property value="address"/> </td>
+        <td><s:property value="email"/> </td>
+         <td><s:property value="phone"/> </td>
+         
+            <td><button type="button" class="btn btn-primary" onclick="editfun(<%=form.get(i).getId()%>,'<%=form.get(i).getName()%>','<%=form.get(i).getDept()%>','<%=form.get(i).getEmail()%>','<%=form.get(i).getAddress()%>',<%=form.get(i).getPhone()%>)">Edit</button>
+			 <a href="#editEmployeeModal" class="edit" data-toggle="modal" id="editId"></a> </td>
+			
+			
+            <td>
+					<button type="button" class="btn btn-primary" onclick="deletefun(<%=form.get(i).getId()%>)">Delete</button>
+					 <a href="#deleteEmployeeModal1" class="delete" data-toggle="modal" id="deleteId"></a> 
+					<%i++; %>
+			</td>
+        
+        </tr>
+        </s:iterator>
+        
+        
+		<%-- 	<logic:iterate id="listId" name="list">
 				<tr>
-					<td><bean:write name="listId" property="id" /></td>
+					<!-- <td><bean:write name="listId" property="id" /></td>
 					<td><bean:write name="listId" property="name" /></td>
 					<td><bean:write name="listId" property="dept" /></td>
 					<td><bean:write name="listId" property="address" /></td>
 					<td><bean:write name="listId" property="email" /></td>
-					<td><bean:write name="listId" property="phone" /></td>
+					<td><bean:write name="listId" property="phone" /></td> -->
 					<td><button type="button" class="btn btn-primary" onclick="editfun(<%=form.get(i).getId()%>,'<%=form.get(i).getName()%>','<%=form.get(i).getDept()%>','<%=form.get(i).getEmail()%>','<%=form.get(i).getAddress()%>',<%=form.get(i).getPhone()%>)">Edit</button>
-					 <a href="#editEmployeeModal" class="edit" data-toggle="modal" id="editId"></a> </td>
-					
+<!-- 					 <a href="#editEmployeeModal" class="edit" data-toggle="modal" id="editId"></a> </td>
+ -->					
 					<td>
 					<button type="button" class="btn btn-primary" onclick="deletefun(<%=form.get(i).getId()%>)">Delete</button>
 					 <a href="#deleteEmployeeModal1" class="delete" data-toggle="modal" id="deleteId"></a> 
 					<%i++; %>
 					</td>
 				</tr>
-			</logic:iterate>
+			</logic:iterate> --%>
 		</tbody>
 	</table>
 
-	<html:link action="/addEmployee">Add Employee</html:link>
+	<!-- <html:link action="/addEmployee">Add Employee</html:link>
 	<br></br>
-	<html:link action="/updateEmployee">Update Employee</html:link>
+	<html:link action="/updateEmployee">Update Employee</html:link> -->
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -180,16 +210,23 @@ i=0;
                         <label>Department</label>
                         <html:text property="dept" styleClass="form-control" value=""/>
                        
-                      <%!int i1=0; %>
+                     <%!int i1=0; %>
                      <%List<String>listOfDept=(List<String>)request.getAttribute("deptlist");
                       i1=0;
 %>
                  
                 <select id="dept" name="dept" Class="form-control" required="required" >             
                                     
-                                     <option value="" >-- Select --</option>                  <logic:iterate id="deptlist"   name="deptlist">      
-                                     <option value="<%=listOfDept.get(i1)%>"><bean:write name="deptlist"  /></option>                  <%i1++; %>     
-                                     </logic:iterate>                   </select>                                             
+                                     <option value="" >-- Select --</option>              
+                                      <s:iterator value="deptlist"> 
+                                     <option value="<%=listOfDept.get(i1)%>">
+                                     
+                                     <td><s:property value="deptlist"/> 
+                                     </td>
+</option>                  <%i1++; %>     
+                                     </s:iterator>
+                                     
+                                      </select>                                         
                  
                        
                     </div>
@@ -267,4 +304,4 @@ i=0;
 	</div>
 </div>
 </body>
-</html> --%>
+</html> 

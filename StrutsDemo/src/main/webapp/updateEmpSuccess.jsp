@@ -1,6 +1,8 @@
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
+<%--     <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
+ --%>    <%@ taglib prefix="s" uri="/struts-tags"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +22,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Delete Employee</title>
+<title>Update Employee</title>
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -71,4 +73,4 @@
 	</div>
 </div>
 </body>
-</html> --%>
+</html> 
