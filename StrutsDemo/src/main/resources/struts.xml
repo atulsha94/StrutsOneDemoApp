@@ -7,22 +7,20 @@
 	<package name="default" extends="struts-default">
 		<action name="userLogin" class="com.acc.action.UserLoginAction">
  			<result name="SUCCESS" type="chain">dashboard</result>
- 
-<!-- 			<result name="SUCCESS" >dashboard.jsp</result>
- -->			<result name="ERROR">/login.jsp</result>
+			<result name="ERROR">/login.jsp</result>
 		</action>
 		  <action name="dashboard" class="com.acc.action.DashBoardAction">
 			<result name="dashboard">/dashboard.jsp</result>
 		</action>
 		  <action name="updateEmployee" class="com.acc.action.UpdateEmployeeAction">
-			<result name="SUCCESS">/updateEmpSuccess.jsp</result>
+			<result name="success">/updateEmpSuccess.jsp</result>
 		</action>
 		<action name="deleteAction" class="com.acc.action.DeleteEmployeeAction">
-			<result name="SUCCESS">/deleteSuccess.jsp</result>
+			<result name="success">/deleteSuccess.jsp</result>
 			</action>
 			
 			<action name="addEmployee1" class="com.acc.action.AddEmployeeAction">
-			<result name="SUCCESS">/dashboard.jsp</result>
+			<result name="success">/dashboard.jsp</result>
 		</action>  
 	</package>
 </struts>  

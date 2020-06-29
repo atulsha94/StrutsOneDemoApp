@@ -17,8 +17,9 @@ public class UpdateEmployeeAction extends ActionSupport {
 	private String phone;
 	@Override
 	public String execute() throws Exception {
+		System.out.println("in update employee action");
 		boolean updateRecord=new DashBoardService().updateEmployee(id,name,address,email,phone);
-		return SUCCESS;
+		return "success";
 		 
 	}
 	public int getEmployeeId() {

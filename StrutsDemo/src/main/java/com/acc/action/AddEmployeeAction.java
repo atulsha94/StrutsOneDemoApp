@@ -32,7 +32,7 @@ public class AddEmployeeAction extends ActionSupport {
 		 empBeanList=dashBoardService.getAllEmployees();
 			
 		
-		return SUCCESS;
+		return "success";
 	}
 	public int getEmployeeId() {
 		return employeeId;

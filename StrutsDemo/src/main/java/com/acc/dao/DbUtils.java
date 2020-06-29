@@ -235,6 +235,7 @@ public class DbUtils {
 		if (conn != null) {
 			try {
 				String sql = "DELETE FROM employee WHERE EMP_ID = ?";
+				System.out.println(sql);
 				PreparedStatement statement = conn.prepareStatement(sql);
 				statement.setString(1, empId);
 				int result = statement.executeUpdate();

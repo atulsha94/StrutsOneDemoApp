@@ -13,7 +13,7 @@ String empId;
 	@Override
 	public String execute() throws Exception {
 	   deleteRecord=new DashBoardService().deleteEmployee(empId);
-	    return SUCCESS;
+	    return "success";
 	    }
 	public boolean isDeleteRecord() {
 		return deleteRecord;
