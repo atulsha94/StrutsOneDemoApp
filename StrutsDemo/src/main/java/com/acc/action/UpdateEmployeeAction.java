@@ -15,10 +15,11 @@ public class UpdateEmployeeAction extends ActionSupport {
 	private String address;
 	private String email;
 	private String phone;
+	boolean updateRecord;
 	@Override
 	public String execute() throws Exception {
 		System.out.println("in update employee action");
-		boolean updateRecord=new DashBoardService().updateEmployee(id,name,address,email,phone);
+		 updateRecord=new DashBoardService().updateEmployee(id,name,address,email,phone);
 		return "success";
 		 
 	}
@@ -64,5 +65,12 @@ public class UpdateEmployeeAction extends ActionSupport {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public boolean isUpdateRecord() {
+		return updateRecord;
+	}
+	public void setUpdateRecord(boolean updateRecord) {
+		this.updateRecord = updateRecord;
+	}
+	
 
 }

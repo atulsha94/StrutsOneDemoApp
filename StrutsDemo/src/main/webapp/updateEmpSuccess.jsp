@@ -45,8 +45,8 @@
 		
 		
 		window.onload = function() {
-			var deleteRec=<%= request.getAttribute("updateRecord")%>;
-			if(deleteRec==true){
+			var updateRecord=<%= request.getAttribute("updateRecord")%>;
+			if(updateRecord==true){
 				document.getElementById("updateSuccess").click();
 			}else{
 				document.getElementById("updatefail").click();
