@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
+<%@ taglib prefix = "s" uri = "/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,18 +18,19 @@
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 logindiv">
 				<form class="login100-form validate-form" action="userLogin" method="post">
+				<div style="color: red"><html:errors />${msgId} <s:actionerror /></div>
 					<span class="login100-form-title p-b-49">
 						Login
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 						<span class="label-input100">User Name</span>
-						<input class="userLoginForm" id="userName" type="text" name="userName"  placeholder="Type your username">
+						 <s:textfield cssClass="userLoginForm" name = "userName" size = "20" ></s:textfield>
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="userLoginForm" type="password" name="password" placeholder="Type your password">
+						 <s:password cssClass="userLoginForm" name = "password" size = "20" ></s:password>
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
@@ -40,12 +41,12 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Login
-							</button>
-						</div>
+					 <div class="wrap-login100-form-btn">
+					 <div class="login100-form-bgbtn"></div>
+ 						<button class="login100-form-btn">
+						Login
+					</button>
+					</div>
 					</div>
 				</form>
 			</div>

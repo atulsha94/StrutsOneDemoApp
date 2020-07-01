@@ -50,5 +50,13 @@ public class UserLoginAction extends ActionSupport{
 	public void setMsgId(String msgId) {
 		this.msgId = msgId;
 	}
-	
+	 public void validate() {
+	      if (userName == null || userName.trim().equals("")) {
+	         addActionError("The name is required");
+	      }
+	      
+	      if (password == null || password.trim().equals("")) {
+	    	  addActionError("The Password is required");
+		      }
+	   }
 }

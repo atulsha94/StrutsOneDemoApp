@@ -8,6 +8,7 @@
 		<action name="userLogin" class="com.acc.action.UserLoginAction">
  			<result name="SUCCESS" type="chain">dashboard</result>
 			<result name="ERROR">/login.jsp</result>
+			<result name="input">/login.jsp</result>
 		</action>
 		  <action name="dashboard" class="com.acc.action.DashBoardAction">
 			<result name="dashboard">/dashboard.jsp</result>

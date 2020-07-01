@@ -239,7 +239,8 @@ i=0;
 						<div class="form-group">
 							<label>Email</label> <input type="email" value=""
 								class="form-control" id="email" name="email" required="required"
-								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  oninvalid="setCustomValidity('Please enter valid email id ')"
+    onchange="try{setCustomValidity('')}catch(e){}">
 						</div>
 						<div class="form-group">
 							<label>Address</label> <input type="text" value=""
@@ -249,7 +250,8 @@ i=0;
 						<div class="form-group">
 							<label>Phone</label> <input type="tel" value=""
 								class="form-control" id="phone" name="phone" required="required"
-								pattern="[6-9]{1}[0-9]{9}">
+								pattern="[6-9]{1}[0-9]{9}"  oninvalid="setCustomValidity('Please enter valid phone number Start with [6-9]')"
+    onchange="try{setCustomValidity('')}catch(e){}" >
 						</div>
 					</div>
 
@@ -298,7 +300,8 @@ i=0;
 						<div class="form-group">
 							<label>Email</label> <input type="email" class="form-control"
 								id="editEmail" name="email" required="required"
-								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninvalid="setCustomValidity('Please enter valid email id ')"
+    onchange="try{setCustomValidity('')}catch(e){}">
 						</div>
 						<div class="form-group">
 							<label>Address</label>
@@ -308,7 +311,8 @@ i=0;
 						<div class="form-group">
 							<label>Phone</label> <input type="tel" class="form-control"
 								id="editPhone" name="phone" required="required"
-								pattern="[6-9]{1}[0-9]{9}">
+								pattern="[6-9]{1}[0-9]{9}"  oninvalid="setCustomValidity('Please enter valid phone number Start with [6-9]')"
+    onchange="try{setCustomValidity('')}catch(e){}">
 						</div>
 					</div>
 					<div class="modal-footer">
