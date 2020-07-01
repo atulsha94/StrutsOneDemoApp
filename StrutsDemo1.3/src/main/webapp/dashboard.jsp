@@ -108,7 +108,7 @@ i=0;
 		function deletefun(val){
 			 //session.setAttribrute("empId",val);
 			 //alert(document.forms[0].action);
-			 document.forms[0].action="/StrutsDemo/deleteAction.do?empId="+val;
+			 document.forms[0].action="/StrutsDemo1.3/deleteAction.do?empId="+val;
 			document.getElementById("deleteId").click();
 			}
 		function editfun(empid,name,dept,email,address,phone){
@@ -163,7 +163,7 @@ i=0;
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/StrutsDemo/addEmployee1.do"  method="post" class="needs-validation" >
+            <form action="/StrutsDemo1.3/addEmployee1.do"  method="post" class="needs-validation" >
                 <div class="modal-header">                      
                     <h4 class="modal-title">Add Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

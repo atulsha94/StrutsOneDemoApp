@@ -18,7 +18,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 logindiv">
-				<form class="login100-form validate-form" action="/StrutsDemo/userLogin.do" method="post">
+				<form class="login100-form validate-form" action="/StrutsDemo1.3/userLogin.do" method="post">
 					<div style="color: red"><html:errors />${msgId}</div>
 					<span class="login100-form-title p-b-49">
 						Login

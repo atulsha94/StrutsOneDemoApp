@@ -48,13 +48,13 @@
 				document.getElementById("deleteSuccess").click();
 			}else{
 				document.getElementById("deletefail").click();
-				window.location.href = "../StrutsDemo/dashboard.do"
+				window.location.href = "../StrutsDemo1.3/dashboard.do"
 			}
 			};
 		
 	</script>
 
-<a href="StrutsDemo/dashboard.do"  data-toggle="modal" id="deletefail"></a>
+<a href="StrutsDemo1.3/dashboard.do"  data-toggle="modal" id="deletefail"></a>
 <a href="#showDeleteSuccessfull"  data-toggle="modal" id="deleteSuccess"></a>
 <div id="showDeleteSuccessfull" class="modal fade">
 	<div class="modal-dialog">
