@@ -19,15 +19,10 @@ public class DashBoardAction extends ActionSupport {
 	
 	public String execute() throws Exception {
 		
-System.out.println("hi");
 		DashBoardService dashBoardService=new DashBoardService();
-	
-		/*
-		 * request.setAttribute("list",dashBoardService.getAllEmployees());
-		 */
 		
 		empBeanList=dashBoardService.getAllEmployees();
-		//request.setAttri
+	
 		
 		listofdept=dashBoardService.getAllDept();
 	

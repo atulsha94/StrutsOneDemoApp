@@ -29,14 +29,14 @@
 </head>
 
 <body>
-	<%!int i=0;%>
+	<%!int i = 0;%>
 	<%
-/* 	List<EmployeeForm> form=(List<EmployeeForm>)request.getAttribute("list"); empBeanList
- */
- List<EmployeeBean> form=(List<EmployeeBean>)request.getAttribute("empBeanList");
+		/* 	List<EmployeeForm> form=(List<EmployeeForm>)request.getAttribute("list"); empBeanList
+		 */
+		List<EmployeeBean> form = (List<EmployeeBean>) request.getAttribute("empBeanList");
 
-i=0;
-%>
+		i = 0;
+	%>
 	<div class="col-sm-6">
 		<h2>
 			Manage<b>Employees</b>
@@ -85,37 +85,17 @@ i=0;
 						<button type="button" class="btn btn-primary"
 							onclick="deletefun(<%=form.get(i).getId()%>)">Delete</button> <a
 						href="#deleteEmployeeModal1" class="delete" data-toggle="modal"
-						id="deleteId"></a> <%i++; %>
+						id="deleteId"></a> <%
+ 	i++;
+ %>
 					</td>
 
 				</tr>
 			</s:iterator>
 
-
-			<%-- 	<logic:iterate id="listId" name="list">
-				<tr>
-					<!-- <td><bean:write name="listId" property="id" /></td>
-					<td><bean:write name="listId" property="name" /></td>
-					<td><bean:write name="listId" property="dept" /></td>
-					<td><bean:write name="listId" property="address" /></td>
-					<td><bean:write name="listId" property="email" /></td>
-					<td><bean:write name="listId" property="phone" /></td> -->
-					<td><button type="button" class="btn btn-primary" onclick="editfun(<%=form.get(i).getId()%>,'<%=form.get(i).getName()%>','<%=form.get(i).getDept()%>','<%=form.get(i).getEmail()%>','<%=form.get(i).getAddress()%>',<%=form.get(i).getPhone()%>)">Edit</button>
-<!-- 					 <a href="#editEmployeeModal" class="edit" data-toggle="modal" id="editId"></a> </td>
- -->					
-					<td>
-					<button type="button" class="btn btn-primary" onclick="deletefun(<%=form.get(i).getId()%>)">Delete</button>
-					 <a href="#deleteEmployeeModal1" class="delete" data-toggle="modal" id="deleteId"></a> 
-					<%i++; %>
-					</td>
-				</tr>
-			</logic:iterate> --%>
 		</tbody>
 	</table>
 
-	<!-- <html:link action="/addEmployee">Add Employee</html:link>
-	<br></br>
-	<html:link action="/updateEmployee">Update Employee</html:link> -->
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -138,8 +118,6 @@ i=0;
 		});
 		
 		function deletefun(val){
-			 //session.setAttribrute("empId",val);
-			 //alert(document.forms[0].action);
 			 document.forms[0].action="/Struts2Example/deleteAction?empId="+val;
 			document.getElementById("deleteId").click();
 			}
@@ -194,13 +172,11 @@ i=0;
 
 
 	<!-- Edit ADD Modal HTML -->
-	<!-- Edit ADD Modal HTML -->
-	<!-- Edit ADD Modal HTML -->
+
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<s:form action="addEmployee1" method="post"
-					class="needs-validation">
+				<s:form action="addEmployee1" method="post" class="needs-validation">
 					<div class="modal-header">
 						<h4 class="modal-title">Add Employee</h4>
 						<button type="button" class="close" data-dismiss="modal"
@@ -217,18 +193,21 @@ i=0;
 						</div>
 						<div class="form-group">
 							<label>Department</label>
-							<%!int i1=0; %>
-							<%List<String>listOfDept=(List<String>)request.getAttribute("listofdept");
-                      i1=0;
-%>
+							<%!int i1 = 0;%>
+							<%
+								List<String> listOfDept = (List<String>) request.getAttribute("listofdept");
+									i1 = 0;
+							%>
 
 							<select id="dept" name="dept" Class="form-control"
 								required="required">
 
 								<option value="">-- Select --</option>
 								<s:iterator value="listofdept">
-									<option value="<%=listOfDept.get(i1)%>"><s:property/></option>
-									<%i1++; %>
+									<option value="<%=listOfDept.get(i1)%>"><s:property /></option>
+									<%
+										i1++;
+									%>
 								</s:iterator>
 
 							</select>
@@ -239,8 +218,9 @@ i=0;
 						<div class="form-group">
 							<label>Email</label> <input type="email" value=""
 								class="form-control" id="email" name="email" required="required"
-								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  oninvalid="setCustomValidity('Please enter valid email id ')"
-    onchange="try{setCustomValidity('')}catch(e){}">
+								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+								oninvalid="setCustomValidity('Please enter valid email id ')"
+								onchange="try{setCustomValidity('')}catch(e){}">
 						</div>
 						<div class="form-group">
 							<label>Address</label> <input type="text" value=""
@@ -250,8 +230,9 @@ i=0;
 						<div class="form-group">
 							<label>Phone</label> <input type="tel" value=""
 								class="form-control" id="phone" name="phone" required="required"
-								pattern="[6-9]{1}[0-9]{9}"  oninvalid="setCustomValidity('Please enter valid phone number Start with [6-9]')"
-    onchange="try{setCustomValidity('')}catch(e){}" >
+								pattern="[6-9]{1}[0-9]{9}"
+								oninvalid="setCustomValidity('Please enter valid phone number Start with [6-9]')"
+								onchange="try{setCustomValidity('')}catch(e){}">
 						</div>
 					</div>
 
@@ -300,8 +281,9 @@ i=0;
 						<div class="form-group">
 							<label>Email</label> <input type="email" class="form-control"
 								id="editEmail" name="email" required="required"
-								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninvalid="setCustomValidity('Please enter valid email id ')"
-    onchange="try{setCustomValidity('')}catch(e){}">
+								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+								oninvalid="setCustomValidity('Please enter valid email id ')"
+								onchange="try{setCustomValidity('')}catch(e){}">
 						</div>
 						<div class="form-group">
 							<label>Address</label>
@@ -311,8 +293,9 @@ i=0;
 						<div class="form-group">
 							<label>Phone</label> <input type="tel" class="form-control"
 								id="editPhone" name="phone" required="required"
-								pattern="[6-9]{1}[0-9]{9}"  oninvalid="setCustomValidity('Please enter valid phone number Start with [6-9]')"
-    onchange="try{setCustomValidity('')}catch(e){}">
+								pattern="[6-9]{1}[0-9]{9}"
+								oninvalid="setCustomValidity('Please enter valid phone number Start with [6-9]')"
+								onchange="try{setCustomValidity('')}catch(e){}">
 						</div>
 					</div>
 					<div class="modal-footer">
