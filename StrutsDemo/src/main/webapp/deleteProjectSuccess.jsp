@@ -1,8 +1,5 @@
- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%--     <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
- --%>    <%@ taglib prefix="s" uri="/struts-tags"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,30 +42,30 @@
 		
 		
 		window.onload = function() {
-			var deleteRec=<%= request.getAttribute("deleteRecord")%>;
+			var deleteRec=${projectDeleted};
 			if(deleteRec==true){
 				document.getElementById("deleteSuccess").click();
 			}else{
 				document.getElementById("deletefail").click();
-				window.location.href = "../Struts2Example/dashboard.do"
+				window.location.href = "projectDashboard"
 			}
 			};
 		
 	</script>
 
-<a href="Struts2Example/dashboard"  data-toggle="modal" id="deletefail"></a>
+<a href="/dashboardservice"  data-toggle="modal" id="deletefail"></a>
 <a href="#showDeleteSuccessfull"  data-toggle="modal" id="deleteSuccess"></a>
 <div id="showDeleteSuccessfull" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<s:form action="/dashboard">
+			<form action="projectDashboard" method="post">
 				<div class="modal-body">					
 					<p>Record is deleted successfully !</p>
 				</div>
 				<div class="modal-footer">
 					<input type="submit" style="background:green"  value="Ok">
 				</div>
-			</s:form>
+			</form>
 		</div>
 	</div>
 </div>

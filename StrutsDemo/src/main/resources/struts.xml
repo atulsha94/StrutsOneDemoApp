@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<constant name="struts.action.excludePattern" value="/api/.*"/>
+	<package name="default" extends="struts-default">
+	
+		<action name="userLogin" class="com.acc.action.UserLoginAction">
+ 			<result name="SUCCESS" type="chain">dashboard</result>
+			<result name="ERROR">/login.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		  <action name="dashboard" class="com.acc.action.DashBoardAction">
+			<result name="dashboard">/dashboard.jsp</result>
+		</action>
+		  <action name="updateEmployee" class="com.acc.action.UpdateEmployeeAction">
+			<result name="success">/updateEmpSuccess.jsp</result>
+		</action>
+		<action name="deleteAction" class="com.acc.action.DeleteEmployeeAction">
+			<result name="success">/deleteSuccess.jsp</result>
+			</action>
+			
+			<action name="addEmployee1" class="com.acc.action.AddEmployeeAction">
+			<result name="success">/dashboard.jsp</result>
+		</action>
+		 
+	</package>
+</struts>  

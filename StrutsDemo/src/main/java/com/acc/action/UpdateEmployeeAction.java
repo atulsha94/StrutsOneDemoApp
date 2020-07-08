@@ -3,23 +3,74 @@ package com.acc.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
 
-import com.acc.form.EmployeeForm;
 import com.acc.service.DashBoardService;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class UpdateEmployeeAction extends Action {
-
+public class UpdateEmployeeAction extends ActionSupport {
+	private int employeeId;
+	private String id;
+	private String name;
+	private String dept;
+	private String address;
+	private String email;
+	private String phone;
+	boolean updateRecord;
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		EmployeeForm updateEmpForm = (EmployeeForm) form;
-		request.getSession().setAttribute("updateRecord", new DashBoardService().updateEmployee(updateEmpForm));
-		return mapping.findForward("success");
+	public String execute() throws Exception {
+		System.out.println("in update employee action");
+		 updateRecord=new DashBoardService().updateEmployee(id,name,address,email,phone);
+		return "success";
 		 
 	}
+	public int getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public boolean isUpdateRecord() {
+		return updateRecord;
+	}
+	public void setUpdateRecord(boolean updateRecord) {
+		this.updateRecord = updateRecord;
+	}
+	
 
 }

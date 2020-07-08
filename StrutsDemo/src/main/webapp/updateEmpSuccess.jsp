@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
+<%--     <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
+ --%>    <%@ taglib prefix="s" uri="/struts-tags"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +22,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Delete Employee</title>
+<title>Update Employee</title>
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -43,32 +45,32 @@
 		
 		
 		window.onload = function() {
-			var deleteRec=<%= session.getAttribute("updateRecord")%>;
-			if(deleteRec==true){
+			var updateRecord=<%= request.getAttribute("updateRecord")%>;
+			if(updateRecord==true){
 				document.getElementById("updateSuccess").click();
 			}else{
 				document.getElementById("updatefail").click();
-				window.location.href = "../StrutsDemo/dashboard.do"
+				window.location.href = "../Struts2Example/dashboard"
 			}
 			};
 		
 	</script>
 
-<a href="StrutsDemo/dashboard.do"  data-toggle="modal" id="updatefail"></a>
+<a href="Struts2Example/dashboard"  data-toggle="modal" id="updatefail"></a>
 <a href="#showDeleteSuccessfull"  data-toggle="modal" id="updateSuccess"></a>
 <div id="showDeleteSuccessfull" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<html:form action="/dashboard.do">
+			<s:form action="dashboard">
 				<div class="modal-body">					
 					<p>Record is updated successfully !</p>
 				</div>
 				<div class="modal-footer">
 					<input type="submit" style="background:green"  value="Ok">
 				</div>
-			</html:form>
+			</s:form>
 		</div>
 	</div>
 </div>
 </body>
-</html>
+</html> 

@@ -1,14 +1,6 @@
-package com.acc.form;
+package com.acc.bean;
 
-import org.apache.struts.action.ActionForm;
-
-public class EmployeeForm extends ActionForm  {
-
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class EmployeeBean {
 	private int employeeId;
 	private String id;
 	private String name;
@@ -16,12 +8,17 @@ public class EmployeeForm extends ActionForm  {
 	private String address;
 	private String email;
 	private String phone;
-	
 	public int getEmployeeId() {
 		return employeeId;
 	}
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -53,19 +50,5 @@ public class EmployeeForm extends ActionForm  {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
-	
 	
 }

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS Employee (
 -- Dumping structure for table DemoDatabase.Department
 DROP TABLE IF EXISTS Department;
 CREATE TABLE IF NOT EXISTS Department (
-  Dept_ID bigint(20) NOT NULL,
+  Dept_ID bigint(20) NOT NULL AUTO_INCREMENT,
   Dept_Name varchar(50) DEFAULT NULL,
   PRIMARY KEY (Dept_ID)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
@@ -45,3 +45,18 @@ CREATE TABLE IF NOT EXISTS UserDetails (
 
 -- use insert script like this CURDATE() function for current date insert.
 INSERT INTO userdetails VALUES(NULL,'struts','struts123', CURDATE())
+
+-- Dumping structure for table DemoDatabase.Department
+DROP TABLE IF EXISTS project;
+CREATE TABLE IF NOT EXISTS project (
+  project_ID bigint(20) NOT NULL AUTO_INCREMENT,
+  project_Name varchar(50) DEFAULT NULL,
+  PRIMARY KEY (project_ID)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+
+Insert into project values(1,'test project');
+Insert into project values(2,'employee management project');
+Insert into project values(3,'Research project');
+Insert into project values(4,'Sales [roject');
+Insert into project values(5,'Operations project');

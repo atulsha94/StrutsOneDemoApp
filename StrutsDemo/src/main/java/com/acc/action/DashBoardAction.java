@@ -1,28 +1,46 @@
 package com.acc.action;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-
-import com.acc.dao.DbUtils;
-import com.acc.form.EmployeeForm;
+import com.acc.bean.EmployeeBean;
 import com.acc.service.DashBoardService;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class DashBoardAction extends Action {
-
-@Override
-public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	EmployeeForm hwForm = (EmployeeForm) form;
-	DashBoardService dashBoardService=new DashBoardService();
+public class DashBoardAction extends ActionSupport {
 	
-	request.setAttribute("list",dashBoardService.getAllEmployees());
+	private List<EmployeeBean> empBeanList=new ArrayList();
 	
-	request.setAttribute("deptlist",dashBoardService.getAllDept());
+	List<String> listofdept=new ArrayList<String>();
+	
+	
+	
+	public String execute() throws Exception {
+		
+		DashBoardService dashBoardService=new DashBoardService();
+		
+		empBeanList=dashBoardService.getAllEmployees();
+	
+		System.out.println("in dashboard");
+		listofdept=dashBoardService.getAllDept();
+	
+	    return "dashboard";
+	
+	    }
+	public List<EmployeeBean> getEmpBeanList() {
+		return empBeanList;
+	}
+	public void setEmpBeanList(List<EmployeeBean> empBeanList) {
+		this.empBeanList = empBeanList;
+	}
+	public List<String> getListofdept() {
+		return listofdept;
+	}
+	public void setListofdept(List<String> listofdept) {
+		this.listofdept = listofdept;
+	}
 
-    return mapping.findForward("success");
 
-    }
 }

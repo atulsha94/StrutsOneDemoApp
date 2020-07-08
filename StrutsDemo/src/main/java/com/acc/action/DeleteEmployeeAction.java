@@ -3,19 +3,29 @@ package com.acc.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
 
 import com.acc.service.DashBoardService;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class DeleteEmployeeAction extends Action{
-
+public class DeleteEmployeeAction extends ActionSupport{
+private boolean deleteRecord;
+String empId;
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	    String empId=(String)request.getParameter("empId");
-	   request.getSession().setAttribute("deleteRecord", new DashBoardService().deleteEmployee(empId));
-	    return mapping.findForward("success");
+	public String execute() throws Exception {
+	   deleteRecord=new DashBoardService().deleteEmployee(empId);
+	    return "success";
 	    }
+	public boolean isDeleteRecord() {
+		return deleteRecord;
+	}
+	public void setDeleteRecord(boolean deleteRecord) {
+		this.deleteRecord = deleteRecord;
+	}
+	public String getEmpId() {
+		return empId;
+	}
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+	
 }
