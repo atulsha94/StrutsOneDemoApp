@@ -5,18 +5,22 @@
 
 <struts>
 <constant name="struts.action.excludePattern" value="/api/.*"/>
-	<package name="default" extends="struts-default">
+	<package name="default" extends="struts-default" namespace="/">
 	
 		<action name="userLogin" class="com.acc.action.UserLoginAction">
  			<result name="SUCCESS" type="chain">dashboard</result>
 			<result name="ERROR">/login.jsp</result>
 			<result name="input">/login.jsp</result>
 		</action>
+		
+		<action name="*">
+    		<result>/login.jsp</result>
+		</action>
 		  <action name="dashboard" class="com.acc.action.DashBoardAction">
 			<result name="dashboard">/dashboard.jsp</result>
 		</action>
 		  <action name="updateEmployee" class="com.acc.action.UpdateEmployeeAction">
-			<result name="success">/updateEmpSuccess.jsp</result>
+			<result name="success">/up	dateEmpSuccess.jsp</result>
 		</action>
 		<action name="deleteAction" class="com.acc.action.DeleteEmployeeAction">
 			<result name="success">/deleteSuccess.jsp</result>

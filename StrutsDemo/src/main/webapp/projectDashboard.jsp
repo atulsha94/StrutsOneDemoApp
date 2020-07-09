@@ -6,6 +6,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.acc.bean.ProjectBean"%>
+<%@ taglib uri="WEB-INF/mytags.tld" prefix="t" %>  
+<%@ taglib uri="WEB-INF/message.tld" prefix="m" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -70,11 +72,19 @@
 
 <body>
 
-	<div class="col-sm-6">
+<div align="right" class="col-sm-7">
+		<h2>
+			<m:message mess = "Manage Project"/>  
+		</h2>
+	</div>
+	<div align="right">
+		Time: <t:time/>
+	</div>
+	<!-- <div class="col-sm-6">
 		<h2>
 			Manage <b>Project</b>
 		</h2>
-	</div>
+	</div> -->
 	<div align="right">
 		<a href="#addEmployeeModal" class="btn btn-success"
 			data-toggle="modal"><span>Add New Project</span></a>

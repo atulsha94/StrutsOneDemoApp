@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/deptDashboard.do" location="0,196" dimension="342,116" />
+  <StrutsActivity path="/addEmployee.do" location="370,513" dimension="139,76" />
+  <StrutsActivity path="/addDepartment.do" location="387,0" dimension="344,116" />
+  <StrutsActivity path="/updateDepartment.do" location="0,513" dimension="318,116" />
+  <StrutsActivity path="/deptDashboard;6" location="82,0" dimension="178,96" />
+  <StrutsActivity path="/deptDashboard.jsp" location="88,412" dimension="166,56" />
+  <StrutsActivity path="/addEmployee.jsp" location="363,689" dimension="154,56" />
+  <StrutsActivity path="deptDashboard.do" location="473,216" dimension="172,96" />
+  <StrutsActivity path="/updateDeptSuccess.jsp" location="63,729" dimension="192,56" />
+  <StrutsActivity path="/user-form.jsp" />
+  <StrutsTransition id="/updateDepartment.do,success,/updateDeptSuccess.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="159,629" />
+      <AbsolutePoint location="159,729" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/deptDashboard.do,success,/user-form.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="171,254" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/addEmployee.do,null,/addEmployee.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="440,589" />
+      <AbsolutePoint location="440,689" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/deptDashboard.do,success,/deptDashboard.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="171,312" />
+      <AbsolutePoint location="171,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/addDepartment.do,success,deptDashboard.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="559,116" />
+      <AbsolutePoint location="559,216" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/deptDashboard;6,null,/deptDashboard.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="171,96" />
+      <AbsolutePoint location="171,196" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+
