@@ -28,12 +28,12 @@ public class AddEmployeeAction extends Action {
 		
 			
 		request.setAttribute("list",dashBoardService.getAllEmployees());
-			
+		request.setAttribute("deptlist",dashBoardService.getAllDept());
 		addEmpForm.setEmployeeId(savedIdOfEmployee);
 		
 		request.setAttribute("savedId", savedIdOfEmployee);
 		
-		return redirect;
+		return mapping.findForward("success");
 		
 		
 		 

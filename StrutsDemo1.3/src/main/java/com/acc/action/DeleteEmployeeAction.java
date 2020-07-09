@@ -16,6 +16,9 @@ public class DeleteEmployeeAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    String empId=(String)request.getParameter("empId");
 	   request.getSession().setAttribute("deleteRecord", new DashBoardService().deleteEmployee(empId));
+	   DashBoardService dashBoardService =new DashBoardService();
+		request.setAttribute("list",dashBoardService.getAllEmployees());
+		request.setAttribute("deptlist",dashBoardService.getAllDept());
 	    return mapping.findForward("success");
 	    }
 }

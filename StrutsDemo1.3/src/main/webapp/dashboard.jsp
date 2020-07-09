@@ -6,6 +6,9 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ page import="com.acc.form.EmployeeForm"%>
 <%@ page import="java.util.List"%>
+<%@ taglib uri="WEB-INF/mytags.tld" prefix="t" %>  
+<%@ taglib uri="WEB-INF/message.tld" prefix="m" %>  
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -34,10 +37,13 @@
 	List<EmployeeForm> form=(List<EmployeeForm>)request.getAttribute("list");
 i=0;
 %>
-	<div class="col-sm-6">
+	<div align="right" class="col-sm-7">
 		<h2>
-			Manage <b>Employees</b>
+			<m:message mess = "Manage Employees"/>  
 		</h2>
+	</div>
+	<div align="right">
+		Time: <t:time/>
 	</div>
 	<div align="right">
 		<a href="#addEmployeeModal" class="btn btn-success"
